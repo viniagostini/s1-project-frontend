@@ -1,0 +1,77 @@
+<!-- Modal -->
+<div class="modal fade" id="create-ad-modal" tabindex="-1" role="dialog" aria-labelledby="create-ad-modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="create-ad-modalLabel">Criar novo anúncio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger card-block" role="alert" ng-show="showErrorMsg" ng-click="dismissAlerts()">
+                    {{errorMsg}} (click to dismiss)
+                </div>
+                <form class="login-form" name="adForm" ng-submit="createAd(ad, adForm)">
+
+                    <div class="form-group row">
+                        <label for="titulo" class="col-sm-2 col-form-label">Titulo</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="titulo" ng-model="ad.titulo" placeholder="Titulo" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="adCategoria" class="col-sm-2 col-form-label">Categoria</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="adCategoria" ng-model="ad.categoria" required>
+                                <option value="EMPREGO" ng-show="user.tipoUsuario==='PESSOA_JURIDICA'">Emprego</option>
+                                <option value="SERVICO" ng-show="user.tipoUsuario==='PESSOA_JURIDICA'">Servico</option>
+                                <option value="MOVEL">Móvel</option>
+                                <option value="IMOVEL">Imóvel</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="descricao" ng-model="ad.descricao" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" ng-show="ad.categoria==='MOVEL' || ad.categoria==='IMOVEL'">
+                        <label for="valor" class="col-sm-2 col-form-label">Valor</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="valor" ng-model="ad.valor" placeholder="Valor">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="dataInicial" class="col-2 col-form-label">Data Inicial</label>
+                        <div class="col-10">
+                            <input ng-model="ad.dataCriacao" class="form-control" type="date" id="dataInicial" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="dataFinal" class="col-2 col-form-label">Data Final</label>
+                        <div class="col-10">
+                            <input ng-model="ad.dataFinalizacao" class="form-control" type="date" id="dataFinal" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" ng-disabled="adForm.$invalid">
+                            Salvar anúncio
+                        </button>
+                        <button ng-click="clearForm()" class="btn btn-secondary" data-dismiss="modal">
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+                </div>
+        </div>
+    </div>
+</div>

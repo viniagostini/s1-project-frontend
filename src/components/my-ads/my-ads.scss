@@ -1,0 +1,21 @@
+#my-ads-page{
+  .button-row{
+    padding-top: 25px;
+  }
+  .list-group{
+    padding-top: 50px;
+    .default-msg{
+      color: #616161;
+      text-align: center;
+    }
+    .delete-button{
+      float: right;
+    }
+  }
+
+  form{
+    .form-actions{
+      float: right;
+    }
+  }
+}

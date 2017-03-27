@@ -1,0 +1,53 @@
+<!-- Modal -->
+<div class="modal fade edit-info-modal" id="edit-info-modal" tabindex="-1" role="dialog" aria-labelledby="edit-info-modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="edit-info-modalLabel">Editar Informações</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger card-block" role="alert" ng-show="showErrorMsg" ng-click="dismissAlerts()">
+                    {{errorMsg}} (click to dismiss)
+                </div>
+                <form class="login-form" name="userInfoForm" ng-submit="editUser(editedUser, userInfoForm)">
+
+                    <div class="form-group row">
+                        <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="nome" ng-model="editedUser.nome" placeholder="Nome" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="email" ng-model="editedUser.email" placeholder="Email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="tipoUsuario" class="col-sm-2 col-form-label">Tipo do Usuário</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="tipoUsuario" ng-model="editedUser.tipoUsuario" required>
+                                <option value="PESSOA_FISICA">Pessoa Física</option>
+                                <option value="PESSOA_JURIDICA">Pessoa Jurídica</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" ng-disabled="userInfoForm.$invalid">
+                            Salvar alterações
+                        </button>
+                        <button class="btn btn-secondary" data-dismiss="modal">
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

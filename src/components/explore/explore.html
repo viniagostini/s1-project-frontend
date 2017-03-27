@@ -1,0 +1,58 @@
+<div id="explore-page">
+    <h1>Explorar
+    <button class="btn btn-primary"
+            ng-click="toggleFilter = !toggleFilter; filtroCategoria = ''; buscaPorTitulo = ''; ordem = ''">
+        Filtro e Busca
+    </button>
+    </h1>
+    <div class="jumbotron" ng-show="toggleFilter">
+        <!-- filtro categoria -->
+        <div class="form-group row">
+            <label for="filtroCategoria" class="col-sm-2 col-form-label"> Filtrar por categoria: </label>
+            <div class="col-sm-10">
+                <select class="form-control" id="filtroCategoria" ng-model="filtroCategoria" required>
+                    <option value="" selected></option>
+                    <option value="EMPREGO">Emprego</option>
+                    <option value="SERVICO">Servico</option>
+                    <option value="MOVEL">Móvel</option>
+                    <option value="IMOVEL">Imóvel</option>
+                </select>
+            </div>
+        </div>
+        <!-- busca por nome -->
+        <div class="form-group row">
+            <label for="buscaPorTitulo" class="col-sm-2 col-form-label">Busca por nome: </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="buscaPorTitulo" ng-model="buscaPorTitulo" placeholder="Titulo" required>
+            </div>
+        </div>
+        <!-- ordernação -->
+        <div class="form-group row">
+            <label for="ordem" class="col-sm-2 col-form-label"> Ordenar por: </label>
+            <div class="col-sm-10">
+                <select class="form-control" id="ordem" ng-model="ordem" required>
+                    <option value="" selected></option>
+                    <option value="titulo">Titulo</option>
+                    <option value="dataCriacao">Data</option>
+                    <option value="valor">Valor</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+    <div class="list-group">
+        <p class="default-msg" ng-show="allAds.length === 0">Não existem anúncios publicados</p>
+        <a class="list-group-item list-group-item-action flex-column align-items-start" ng-repeat="ad in allAds | filter: {categoria: filtroCategoria} : true | filter: {titulo: buscaPorTitulo} | orderBy: ordem">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ad.titulo}}</h5>
+                <button class="btn btn-success" ng-click="buyAd(ad)" ng-hide="ad.categoria==='SERVICO' || ad.categoria==='EMPREGO'" ng-disabled="ad.anunciante.contato===user.contato">Comprar</button>
+            </div>
+            <p class="mb-1">{{ ad.descricao }}</p>
+            <small>Anunciante: {{ad.anunciante.contato}}</small>
+            <small>Data: {{ad.dataCriacao | date:'dd/MM/yyyy' }} - {{ad.dataFinalizacao | date:'dd/MM/yyyy' }}</small>
+            <small ng-hide="ad.categoria==='SERVICO' || ad.categoria==='EMPREGO'">Valor: {{ ad.valor | currency}}</small>
+            <small>Categoria: {{ ad.categoria }}</small>
+        </a>
+    </div>
+
+</div>

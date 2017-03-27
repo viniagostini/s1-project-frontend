@@ -1,0 +1,27 @@
+<div id="my-ads-page">
+    <h1>Meus anúncios</h1>
+
+    <div class="button-row">
+        <button type="button" class="btn btn-primary button-row-item" data-toggle="modal" data-target="#create-ad-modal">
+            Criar novo anúncio
+        </button>
+    </div>
+
+
+    <div class="list-group">
+        <p class="default-msg" ng-show="user.anuncios.length === 0">Você não tem anúncios publicados</p>
+        <a class="list-group-item list-group-item-action flex-column align-items-start" ng-repeat="ad in user.anuncios">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ad.titulo}}</h5>
+                <button class="btn btn-danger" ng-click="deleteAd(ad.id)">Deletar</button>
+            </div>
+            <p class="mb-1">{{ ad.descricao }}</p>
+            <small>Data: {{ad.dataCriacao | date:'dd/MM/yyyy' }} - {{ad.dataFinalizacao | date:'dd/MM/yyyy' }}</small>
+            <small ng-hide="ad.categoria==='SERVICO' || ad.categoria==='EMPREGO'">Valor: {{ ad.valor | currency}}</small>
+            <small>Categoria: {{ ad.categoria }}</small>
+        </a>
+
+    </div>
+
+    <div ng-include="'src/components/my-ads/create-ad-modal.html'"></div>
+</div>

@@ -1,0 +1,80 @@
+<div class="align-content-center signup-page" style="">
+
+    <div class="signup-alerts">
+        <div class="alert alert-success" role="alert" ng-show="showSuccessMsg" ng-click="dismissAlerts()">
+            {{successMsg}} (click to dismiss)
+        </div>
+
+        <div class="alert alert-danger" role="alert" ng-show="showErrorMsg" ng-click="dismissAlerts()">
+            {{errorMsg}} (click to dismiss)
+        </div>
+    </div>
+
+    <div class="card card-block animated zoomIn">
+        <h4 class="card-title text-center">Cadastrar Usuário</h4>
+        <div class="container">
+            <form class="login-form" name="userForm" ng-submit="createUser(user, userForm)">
+
+                <div class="form-group row">
+                    <label for="userName" class="col-sm-2 col-form-label">Nome</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="userName" ng-model="user.nome" placeholder="Nome" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="userEmail" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" name="email" class="form-control" placeholder="Email"   id="userEmail"
+                               ng-class="{ 'form-control-danger' : userForm.email.$invalid, 'form-control-success' : !userForm.email.$invalid}"
+                               ng-model="user.email" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="userPass" class="col-sm-2 col-form-label">Senha</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="userPass" ng-model="user.senha" placeholder="Senha" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="confirmUserPass" class="col-sm-2 col-form-label">Confirmar</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="confirmUserPass" ng-model="user.confirmSenha" placeholder="Confirmar Senha" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="userTypeSelect" class="col-sm-2 col-form-label">Tipo de Usuário</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="userTypeSelect" ng-model="user.tipoUsuario" required>
+                            <option value="PESSOA_FISICA" >Pessoa Fisica</option>
+                            <option value="PESSOA_JURIDICA">Pessoa Juridica</option>
+                        </select>
+                    </div>
+                </div>
+
+                <br>
+                <button type="submit" class="btn btn-block login-button btn-outline-primary" ng-disabled="userForm.$invalid">
+                    Cadastrar
+                </button>
+
+                <span class="row" style="padding-top: 3%">
+                    <span class="col-md-6">
+                        <button class="btn btn-block login-button btn-info" ui-sref="login">
+                            Login
+                        </button>
+                    </span>
+
+                     <span class="col-md-6">
+                        <button type="reset" class="btn btn-block login-button btn-warning">
+                            Limpar Campos
+                        </button>
+                    </span>
+                </span>
+            </form>
+        </div>
+    </div>
+
+</div>

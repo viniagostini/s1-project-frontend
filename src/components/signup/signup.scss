@@ -1,0 +1,23 @@
+.signup-page{
+  background-color: #212121;
+  padding-top: 10%;
+  padding-bottom: 50%;
+
+  .card{
+    width: 60%;
+    margin-left: 20%;
+    .login-form{
+      padding-top: 5%;
+    }
+
+    .login-button{
+      padding: 2%;
+      font-size: 18px;
+    }
+  }
+
+  .signup-alerts{
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}

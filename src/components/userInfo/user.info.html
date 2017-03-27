@@ -1,0 +1,52 @@
+<div id="user_info">
+    <div class="row info">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    Informações
+                </div>
+                <div class="card-block">
+                    <h4 class="card-title">{{user.nome}}</h4>
+                    <p class="card-text">{{user.email}}</p>
+                    <p class="card-text">{{user.tipoUsuario}}</p>
+                    <button type="button" class="btn btn-primary" ng-click="loadEditedUser()" data-toggle="modal" data-target="#edit-info-modal">
+                        Editar
+                    </button>
+                    <!--<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#create-info-modal">Editar</a>-->
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    Saldo
+                </div>
+                <div class="card-block">
+                    <h4 class="card-title"><span class="badge badge-success">Credor</span> {{user.saldoCredor | currency}}</h4>
+                    <h4 class="card-title"><span class="badge badge-danger">Devedor</span>  {{user.saldoDevedor | currency}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row notifications">
+        <div class="col-sm-12">
+            <div class="card">
+
+                <div class="card-header">
+                    Notificações
+                </div>
+
+                <div class="card-block">
+                   <p ng-show="user.notificacoes.length === 0">Você não tem notificações.</p>
+                    <div class="alert alert-info" role="alert" ng-repeat="notification in user.notificacoes">
+                        <strong>{{notification}}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-include="'src/components/userInfo/edit-info-modal.html'"></div>
+
+</div>
