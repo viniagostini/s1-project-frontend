@@ -1,9 +1,9 @@
 angular.module('addExtreme')
 
     .constant("HTTP_CONSTANTS", {
-        "URL": "http://localhost",
-        "PORT": "8080",
-        "COMPLETE_ADRESS": "http://localhost:8080"
+        "URL": "https://ad-extreme-backend.herokuapp.com",
+        "PORT": "",
+        "COMPLETE_ADRESS": "https://ad-extreme-backend.herokuapp.com"
     })
 
     .constant("HTTP_RESPONSES", {
