@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
     context: __dirname + '/src',
@@ -17,6 +18,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.scss$/,
+                include: [path.resolve(__dirname, 'src/theme-sass')],
                 loader: 'style-loader!css-loader!sass-loader'
             }
         ] //loaders
