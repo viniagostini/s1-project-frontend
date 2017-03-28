@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "bundle": "webpack",
     "watch-bundle": "webpack --watch",
-    "start": "http-server -a localhost -p 8000 -o -c1"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
