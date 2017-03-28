@@ -1,26 +1,32 @@
-var webpack = require('webpack');
-var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    context: __dirname + '/src',
-    entry: {
-        app: [
-            './vendor.imports.js',
-            './app.js'
-        ]
-    },
-    output: {
-        path: __dirname + '/bundle/js',
-        filename: '[name].bundle.js'
-    },
+  entry: ['./src/app.js', './src/theme-sass/theme.scss'],
+  output: {
+    filename: 'bundle/app.bundle.js'
+  },
+  module: {
 
-    module: {
-        loaders: [
-            {
-                test: /\.scss$/,
-                include: [path.resolve(__dirname, 'src/theme-sass')],
-                loader: 'style-loader!css-loader!sass-loader'
-            }
-        ] //loaders
-    } //module
+    rules: [
+      /*
+      your other rules for JavaScript transpiling go in here
+      */
+      { // regular css files
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+          loader: 'css-loader?importLoaders=1',
+        }),
+      },
+      { // sass / scss loader for webpack
+        test: /\.(sass|scss)$/,
+        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+      }
+    ]
+  },
+  plugins: [
+    new ExtractTextPlugin({ // define where to save the file
+      filename: 'bundle/theme.bundle.css',
+      allChunks: true,
+    }),
+  ],
 };
