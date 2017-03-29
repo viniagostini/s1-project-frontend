@@ -1,6 +1,6 @@
 <div class="align-content-center login-page">
     <div class="alert alert-danger card-block" role="alert" ng-show="showErrorMsg" ng-click="dismissAlerts()">
-        {{errorMsg}} (click to dismiss)
+        {{errorMsg}} (clique para dispensar)
     </div>
     <div class="card card-block">
         <h4 class="card-title text-center">Add Extreme</h4>
@@ -13,26 +13,26 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="userPass" class="col-sm-2 col-form-label">Pass</label>
+                    <label for="userPass" class="col-sm-2 col-form-label">Senha</label>
                     <div class="col-sm-10">
                         <input type="password" class="form-control" id="userPass" ng-model="user.pass" placeholder="Password" required>
                     </div>
                 </div>
                 <br>
                 <button type="submit" class="btn btn-block login-button btn-outline-primary" ng-disabled="userForm.$invalid">
-                    Sign in
+                    Entar no sistema
                 </button>
 
                 <span class="row" style="padding-top: 3%">
                     <span class="col-md-6">
                         <button ng-click="goToSignup()" class="btn btn-block login-button btn-info">
-                            Sign up
+                            Criar usuário
                         </button>
                     </span>
 
                      <span class="col-md-6">
                         <button type="reset" class="btn btn-block login-button btn-warning">
-                            Clear
+                            Limpar
                         </button>
                     </span>
                 </span>
